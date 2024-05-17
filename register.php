@@ -9,7 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $username, $email, $password);
     if ($stmt->execute()) {
-        echo "Registration successful!";
+        header("Location: login.php");
+        exit;
     } else {
         echo "Error: " . $stmt->error;
     }
